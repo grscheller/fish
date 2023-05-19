@@ -1,0 +1,109 @@
+#!/bin/sh
+#
+#  Installs my Fish Shell environment into my $HOME directory.
+#
+#
+
+export scriptName=fishInstall
+
+### Setup
+
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:=$HOME/.config}"
+FISH_GIT_REPO="${FISH_GIT_REPO:=$HOME/devel/fish}"
+umask 0022
+
+cd "$FISH_GIT_REPO" || {
+   printf "\\nError: Failed to cd into '%s'\\n" "$FISH_GIT_REPO"
+   return 1
+}
+
+### Source install infrastructure if necessary
+. ./installSource.sh
+
+FISH_FILES='
+   completions/alacritty.fish
+   config.fish
+   conf.d/00-ensure-or-redo-init-env.fish
+   conf.d/abbrs.fish
+   conf.d/colors.fish
+   functions/archJDK.fish
+   functions/ax.fish
+   functions/cu.fish
+   functions/digpath.fish
+   functions/disable_touch_pad.fish
+   functions/enable_touch_pad.fish
+   functions/ev.fish
+   functions/fdot.fish
+   functions/ff.fish
+   functions/fields.fish
+   functions/fishcolors.fish
+   functions/fishterm.fish
+   functions/fm.fish
+   functions/fish_greeting.fish
+   functions/fish_mode_prompt.fish
+   functions/fish_prompt.fish
+   functions/fish_title.fish
+   functions/la.fish
+   functions/ldir.fish
+   functions/ldot.fish
+   functions/lf.fish
+   functions/lh.fish
+   functions/ll.fish
+   functions/mc.fish
+   functions/nsort.fish
+   functions/pathtrim.fish
+   functions/rc.fish
+   functions/ud.fish
+   functions/Wget.fish
+   functions/WgetM.fish
+   functions/b2b.fish
+   functions/b2d.fish
+   functions/b2h.fish
+   functions/b2o.fish
+   functions/d2b.fish
+   functions/d2d.fish
+   functions/d2h.fish
+   functions/d2o.fish
+   functions/h2b.fish
+   functions/h2d.fish
+   functions/h2h.fish
+   functions/h2o.fish
+   functions/o2b.fish
+   functions/o2d.fish
+   functions/o2h.fish
+   functions/o2o.fish
+'
+
+RM_TARGET_ITEMS=""
+
+### Install or Check
+
+# Install Fish config files
+for fish_file in $FISH_FILES
+do
+   install_file "$XDG_CONFIG_HOME/fish" "$fish_file" . 0644 "$switch"
+done
+chmod 0755 "$XDG_CONFIG_HOME"/fish
+
+### Some final tweaks, checks & cleanup
+
+# Remove/report no longer needed files and directories
+for item in $RM_TARGET_ITEMS
+do
+   remove_item "$item" target
+done
+
+# Some final adjustments/tweaks/tasks
+case "$switch" in
+   install)
+      :
+      ;;
+   repo)
+      # Get git status info on repo
+      printf '\nGit Status:\n'
+      git status -s
+      ;;
+   target)
+      :
+      ;;
+esac
