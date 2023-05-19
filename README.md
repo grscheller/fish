@@ -4,9 +4,8 @@ My Fish Shell configuration files for Arch Linux.
 
 ## Installation Location
 
-To install these files to `$XDG_CONFIG_HOME/nvim` from a standalone
-alone `grscheller/nvim` repo:
-
+To install these files to `$XDG_CONFIG_HOME/fish` from a standalone
+alone `grscheller/fish` repo:
 
 ```
    $ ./fishInstall
