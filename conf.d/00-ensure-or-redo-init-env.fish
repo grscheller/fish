@@ -71,7 +71,7 @@ and begin
    set -gx DOTFILE_GIT_REPO ~/devel/dotfiles
    set -gx FISH_GIT_REPO ~/devel/fish
    set -gx NVIM_GIT_REPO ~/devel/nvim
-   set -gx BASH_GIT_REPO ~/devel/bash
+   set -gx HOME_GIT_REPO ~/devel/home
 
    # Added ~/bin and relative paths at end of PATH
    fish_add_path -gP ~/bin bin ../bin .
