@@ -72,7 +72,7 @@ and begin
    set -gx FISH_GIT_REPO ~/devel/fish
    set -gx NVIM_GIT_REPO ~/devel/nvim
    set -gx HOME_GIT_REPO ~/devel/home
-   set -gx SWAY_GIT_REPO ~/devel/sway
+   set -gx SWAY_GIT_REPO ~/devel/sway-env
 
    # Added ~/bin and relative paths at end of PATH
    fish_add_path -gP ~/bin bin ../bin .

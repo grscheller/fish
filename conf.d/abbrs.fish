@@ -1,4 +1,4 @@
-## Set up abriviations
+## Set up abbreviations
 
 # Gui programs
 abbr -a tm fishterm
@@ -37,7 +37,7 @@ abbr -a sfInstall 'sudo $DOTFILE_GIT_REPO/sfInstall'
 abbr -a nvInstall '$NVIM_GIT_REPO/nvInstall'
 abbr -a fishInstall '$FISH_GIT_REPO/fishInstall'
 abbr -a homeInstall '$HOME_GIT_REPO/homeInstall'
-abbr -a swayInstall '$HOME_GIT_REPO/swayInstall'
+abbr -a swayInstall '$SWAY_GIT_REPO/swayInstall'
 
 # Shell environment cmds
 abbr -a re 'cd; REDO_ENV=yes fish'

@@ -1,6 +1,16 @@
 # fish
 
-My Fish Shell configuration files for Arch Linux.
+Fish Shell configuration files.
+
+* very opinionated
+* permanent configuration flows from configuration files
+  * manual configurations can be used for temporary changes
+  * manual changes can be lost on configuration file updates
+  * the `re` (redo environment) shell function may be necessary for some
+    universals and abbreviations to take effect
+
+Can be used either as a standalone repo, or as a git submodule for
+the `grscheller/dotfiles` GitHub repo.
 
 ## Installation Location
 

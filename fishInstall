@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-#  Installs my Fish Shell environment into my $HOME directory.
+#  Installs my Fish Shell environment into $XDG_CONFIG_HOME
 #
 #
 
