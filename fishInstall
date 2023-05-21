@@ -4,20 +4,19 @@
 #
 #
 
+repoName=fish
 export scriptName=fishInstall
-
-### Setup
 
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:=$HOME/.config}"
 FISH_GIT_REPO="${FISH_GIT_REPO:=$HOME/devel/fish}"
 umask 0022
 
 cd "$FISH_GIT_REPO" || {
-   printf "\\nError: Failed to cd into '%s'\\n" "$FISH_GIT_REPO"
+   printf '\n%s: Error - failed to cd into "%s"\n' "$scriptName" "$FISH_GIT_REPO"
    return 1
 }
 
-### Source install infrastructure if necessary
+## If not done already, parse cmdline args and source install infrastructure
 . ./installSource.sh
 
 FISH_FILES='
@@ -76,31 +75,28 @@ FISH_FILES='
 
 RM_TARGET_ITEMS=""
 
-### Install or Check
+DIRS_TO_CREATE=""
+
+## Install/Check
 
 # Install Fish config files
-for fish_file in $FISH_FILES
-do
-   install_file "$XDG_CONFIG_HOME/fish" "$fish_file" . 0644 "$switch"
-done
-chmod 0755 "$XDG_CONFIG_HOME"/fish
-
-### Some final tweaks, checks & cleanup
+install_files "$XDG_CONFIG_HOME/fish" "$FISH_FILES" . 0644
+chmod 0755 "$XDG_CONFIG_HOME/fish"
 
 # Remove/report no longer needed files and directories
-for item in $RM_TARGET_ITEMS
-do
-   remove_item "$item" target
-done
+remove_items "$RM_TARGET_ITEMS"
 
-# Some final adjustments/tweaks/tasks
+# Create/report missing directories
+ensure_dirs "$DIRS_TO_CREATE"
+
+# Adjustments/tweaks/tasks
 case "$switch" in
    install)
       :
       ;;
    repo)
       # Get git status info on repo
-      printf '\nGit Status:\n'
+      printf '\n%s git status:\n' "$repoName"
       git status -s
       ;;
    target)

@@ -18,7 +18,7 @@ To install these files to `$XDG_CONFIG_HOME/fish` from a standalone
 alone `grscheller/fish` repo:
 
 ```
-   $ ./fishInstall
+   $ ./fishInstall [-s {install|target|repo}]
 ```
 
 If `grscheller/fish` is a submodule of `grscheller/dotfiles`, do not run
