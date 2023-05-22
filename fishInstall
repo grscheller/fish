@@ -4,8 +4,8 @@
 #
 #
 
-repoName=fish
-export scriptName=fishInstall
+export MyRepoName=fish
+export MyScriptName=fishInstall
 
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:=$HOME/.config}"
 FISH_GIT_REPO="${FISH_GIT_REPO:=$HOME/devel/fish}"
@@ -19,7 +19,7 @@ cd "$FISH_GIT_REPO" || {
 ## If not done already, parse cmdline args and source install infrastructure
 . ./installSource.sh
 
-FISH_FILES='
+fish_Config_Files='
    completions/alacritty.fish
    config.fish
    conf.d/00-ensure-or-redo-init-env.fish
@@ -73,18 +73,18 @@ FISH_FILES='
    functions/o2o.fish
 '
 
-RM_TARGET_ITEMS=""
+fish_Remove_Items=""
 
 DIRS_TO_CREATE=""
 
 ## Install/Check
 
 # Install Fish config files
-install_files "$XDG_CONFIG_HOME/fish" "$FISH_FILES" . 0644
+install_files "$XDG_CONFIG_HOME/fish" "$fish_Config_Files" . 0644
 chmod 0755 "$XDG_CONFIG_HOME/fish"
 
 # Remove/report no longer needed files and directories
-remove_items "$RM_TARGET_ITEMS"
+remove_items "$fish_Remove_Items"
 
 # Create/report missing directories
 ensure_dirs "$DIRS_TO_CREATE"
@@ -95,9 +95,7 @@ case "$switch" in
       :
       ;;
    repo)
-      # Get git status info on repo
-      printf '\n%s git status:\n' "$repoName"
-      git status -s
+      git_status
       ;;
    target)
       :
