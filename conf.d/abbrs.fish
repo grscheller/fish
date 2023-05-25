@@ -20,8 +20,8 @@ abbr -a tpe enable_touch_pad
 
 # Git related cmds - anything more complicated, I want to think about
 abbr -a ga git add .
+abbr -a gb git 'branch --list|cat'
 abbr -a gc git commit
-abbr -a gco git checkout
 abbr -a gd git diff
 abbr -a gf git fetch
 abbr -a gh git push
@@ -29,7 +29,7 @@ abbr -a gl git log
 abbr -a gm git mv
 abbr -a gp git pull
 abbr -a gs git status  # gs steps on ghostscript
-abbr -a gb git 'branch --list|cat'
+abbr -a gw git switch
 
 # So I can run these outside their repos
 abbr -a dfInstall '$DOTFILE_GIT_REPO/dfInstall'
