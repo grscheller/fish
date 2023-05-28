@@ -26,3 +26,6 @@ if ! set -q SSH_AGENT_PID
    eval (ssh-agent -c)
    and ssh-add
 end
+
+# Enable vi keybindings
+fish_vi_key_bindings

@@ -50,9 +50,6 @@ and begin
    ## Configure fish itself
    set -U fish_features all
 
-   # Enable vi keybindings
-   fish_vi_key_bindings
-
    # Use cursor shape to indicate vi-mode
    set -gx fish_cursor_default block
    set -gx fish_cursor_insert line
