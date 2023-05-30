@@ -17,7 +17,7 @@ cd "$FISH_GIT_REPO" || {
 }
 
 ## If not done already, parse cmdline args and source install infrastructure
-. ./installSource.sh
+. ./.installSource.sh
 
 fish_Config_Files='
    completions/alacritty.fish
