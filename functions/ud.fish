@@ -66,7 +66,7 @@ function ud --description 'Jump up multiple directories, default is 1'
    else if test -d $targetDest
       set destination $targetDest
    else
-      set destination $upDir
+      set destination (dirname $targetDest)
    end
 
    if cd $destination 2>/dev/null
