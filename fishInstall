@@ -8,15 +8,15 @@ export MyRepoName=fish
 export MyScriptName=fishInstall
 
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:=$HOME/.config}"
-FISH_GIT_REPO="${FISH_GIT_REPO:=$HOME/devel/fish}"
+GIT_REPO="${FISH_GIT_REPO:=$HOME/devel/fish}"
 umask 0022
 
-cd "$FISH_GIT_REPO" || {
-   printf '\n%s: Error - failed to cd into "%s"\n' "$scriptName" "$FISH_GIT_REPO"
+cd "$GIT_REPO" || {
+   printf '\n%s: Error - failed to cd into "%s"\n' "$MyScriptName" "$GIT_REPO"
    return 1
 }
 
-## If not done already, parse cmdline args and source install infrastructure
+## source install infrastructure and, if not done already, parse cmdline args
 . ./.installSource.sh
 
 fish_Config_Files='
