@@ -22,6 +22,7 @@ abbr -a tpe enable_touch_pad
 abbr -a ga git add .
 abbr -a gb git 'branch --list|cat'
 abbr -a gc git commit
+abbr -a gco git checkout
 abbr -a gd git diff
 abbr -a gf git fetch
 abbr -a gh git push
