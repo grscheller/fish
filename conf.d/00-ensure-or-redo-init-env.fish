@@ -71,8 +71,8 @@ and begin
    set -gx HOME_GIT_REPO ~/devel/home
    set -gx SWAY_GIT_REPO ~/devel/sway-env
 
-   # Added ~/bin and relative paths at end of PATH
-   fish_add_path -gP ~/bin bin ../bin .
+   # Add ~/bin to end of PATH
+   fish_add_path -gP ~/bin
 
    # RubyGems
    #   Neovim syntax:      $ gem install neovim
