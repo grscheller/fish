@@ -96,6 +96,9 @@ and begin
    end
    set -e gemDirs cnt idx
 
+   # Nix - thru symbolic link to current Nix environment
+   fish_add_path -gpP ~/.nix-profile/bin
+
    # Rust toolchain
    fish_add_path -gpP ~/.cargo/bin
 
