@@ -74,36 +74,14 @@ and begin
    # Add ~/bin to end of PATH
    fish_add_path -gP ~/bin
 
-   # RubyGems
-   #   Neovim syntax:      $ gem install neovim
-   #   Markdown linter:    $ gem install mdl
-   #   Markdown converter: $ gem install kramdown
-   set -l gemDirs ~/.local/share/gem/ruby/*/bin
-   set -l cnt (count $gemDirs)
-   set -l idx
-   switch $cnt
-      case '0'
-      case '1'
-         fish_add_path -gpP $gemDirs
-      case '*'
-         fish_add_path -gpP $gemDirs[1]
-         printf '\n[fish.config] Warning: Multiple Ruby Gem directories found'
-         for idx in (seq 1 $cnt)
-            printf '\n  %s' $gemDirs[$idx]
-            test $idx -eq 1; and printf '  <- using this one'
-            test $idx -eq $cnt; and printf '\n'
-         end
-   end
-   set -e gemDirs cnt idx
-
-   # Nix - thru symbolic link to current Nix environment
-   fish_add_path -gpP ~/.nix-profile/bin
-
    # Rust toolchain
    fish_add_path -gpP ~/.cargo/bin
 
    # Haskell location used by Stack and Cabal
    fish_add_path -gpP ~/.local/bin  ~/.cabal/bin
+
+   # Nix - thru symbolic link to current Nix environment, defer to pacman
+   set PATH $PATH ~/.nix-profile/bin
 
    # Configure JDK on arch with fish function
    if string match -qr 'arch' (uname -r)
@@ -114,9 +92,6 @@ and begin
    set -gx PIP_REQUIRE_VIRTUALENV true
    set -gx PYENV_ROOT ~/.local/share/pyenv
    set -gx PYTHONPATH lib ../lib
-
-   # Minimize Neovim lspconfig and mason internal coupling
-   fish_add_path -gaP ~/.local/share/nvim/mason/bin
 
    # For non-Systemd systems
    if not type -q hostnamectl

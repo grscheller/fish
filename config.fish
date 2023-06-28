@@ -10,10 +10,6 @@ if not status --is-interactive
    return
 end
 
-# opam OCaml configuration
-test -f ~/.opam/opam-init/init.fish
-and source ~/.opam/opam-init/init.fish
-
 # Define Python pyenv function and set environment variables
 type -P pyenv > /dev/null
 and begin
