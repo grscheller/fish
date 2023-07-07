@@ -16,7 +16,7 @@ cd "$GIT_REPO" || {
    return 1
 }
 
-## source install infrastructure and, if not done already, parse cmdline args
+## Source install infrastructure and, if not done already, parse cmdline args
 . ./.installSource.sh
 
 fish_Config_Files='
